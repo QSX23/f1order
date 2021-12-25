@@ -1,5 +1,6 @@
 import "./App.css";
 import Tile from "./components/tile/Tile";
+import Header from "./components/header/header";
 import React, { Component } from "react";
 import axios from "axios";
 import { API_URL } from "./api/config";
@@ -25,6 +26,8 @@ class App extends Component {
       () => console.log(this.state.Drivers[0])
     );
   };
+
+  //ALL  BELOW USED WITHOUT API
 
   componentDidMount() {
     axios.get(`${API_URL}current/driverStandings.json`).then((res) => {
@@ -68,6 +71,48 @@ class App extends Component {
     return list;
   };
 
+  //WORKS BUT TEAM COLORS INDEX NEEDS TO BE CHANGED
+  // componentDidMount() {
+  //   axios.get("http://localhost:8000/f1/drivers").then((res) => {
+  //     if (res.data) {
+  //       this.setState(
+  //         {
+  //           Drivers: res.data,
+  //         },
+  //         () => console.log(this.state.Drivers[0])
+  //       );
+  //     }
+  //   });
+  // }
+
+  // tileList = () => {
+  //   const list = this.state.Drivers.map((item, index) => (
+  //     //driver = item.Driver
+  //     <Draggable
+  //       key={item.number}
+  //       draggableId={item.number.toString()}
+  //       index={index}
+  //     >
+  //       {(provided) => (
+  //         <ul
+  //           ref={provided.innerRef}
+  //           {...provided.draggableProps}
+  //           {...provided.dragHandleProps}
+  //         >
+  //           <Tile
+  //             key={item.number}
+  //             name={item.lastName}
+  //             number={item.number}
+  //             color={item.team}
+  //           />
+  //         </ul>
+  //       )}
+  //     </Draggable>
+  //   ));
+
+  //   return list;
+  // };
+
   constructor(props) {
     super(props);
     this.state = {
@@ -77,22 +122,25 @@ class App extends Component {
   }
   render() {
     return (
-      <div className="App">
-        <h1>Qualifying order</h1>
-        <DragDropContext onDragEnd={this.handleOnDragEnd}>
-          <Droppable droppableId="characters">
-            {(provided) => (
-              <div
-                className="characters"
-                {...provided.droppableProps}
-                ref={provided.innerRef}
-              >
-                {this.tileList()}
-                {provided.placeholder}
-              </div>
-            )}
-          </Droppable>
-        </DragDropContext>
+      <div>
+        <Header />
+        <div className="App">
+          <h1>Qualifying order</h1>
+          <DragDropContext onDragEnd={this.handleOnDragEnd}>
+            <Droppable droppableId="characters">
+              {(provided) => (
+                <div
+                  className="characters"
+                  {...provided.droppableProps}
+                  ref={provided.innerRef}
+                >
+                  {this.tileList()}
+                  {provided.placeholder}
+                </div>
+              )}
+            </Droppable>
+          </DragDropContext>
+        </div>
       </div>
     );
   }
