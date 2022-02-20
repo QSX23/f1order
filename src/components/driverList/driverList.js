@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import Tile from "./components/tile/Tile";
+import Tile from "../tile/Tile";
 import axios from "axios";
-import { API_URL } from "./api/config";
+import { API_URL } from "../../api/config";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
 class DriverList extends Component {

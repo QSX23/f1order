@@ -1,9 +1,17 @@
 .header {
-  height: 3.5vh;
-  min-height: 100px;
+  height: 6vh;
+  min-height: 20px;
   display: flex;
+  justify-content: center;
   flex-direction: row;
   align-content: center;
   text-align: center;
   background: black;
+}
+
+.title {
+  align-self: center;
+  color: aliceblue;
+  font-weight: bold;
+  font-size: 30px;
 }

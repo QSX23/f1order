@@ -5,6 +5,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { API_URL } from "./api/config";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+import DriverList from "./components/driverList/driverList";
 
 //import { constructorData } from "./data/constructorColor";
 
@@ -123,8 +124,9 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Header />
-        <div className="App">
+        <Header page="Order Picker" />
+        <DriverList />
+        {/*<div className="App">
           <h1>Qualifying order</h1>
           <DragDropContext onDragEnd={this.handleOnDragEnd}>
             <Droppable droppableId="characters">
@@ -140,7 +142,7 @@ class App extends Component {
               )}
             </Droppable>
           </DragDropContext>
-        </div>
+              </div>*/}
       </div>
     );
   }
